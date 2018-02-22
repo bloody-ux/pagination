@@ -500,9 +500,9 @@ export default class Pagination extends React.Component {
             [
               (current - 1) * pageSize + 1,
               current * pageSize > props.total ? props.total : current * pageSize,
-              pageSize,
-              this.changePageSize,
-            ]
+            ],
+            pageSize,
+            this.changePageSize,
           )}
         </li>
       );
