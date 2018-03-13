@@ -503,6 +503,7 @@ export default class Pagination extends React.Component {
             ],
             pageSize,
             this.changePageSize,
+            props,
           )}
         </li>
       );
