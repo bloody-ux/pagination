@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Pager from './Pager';
 import Options from './Options';
+import SizeChanger from './SizeChanger';
 import KEYCODE from './KeyCode';
 import LOCALE from './locale/zh_CN';
 
@@ -492,6 +493,18 @@ export default class Pagination extends React.Component {
 
     let totalText = null;
 
+    const sizeChanger = (
+      <SizeChanger
+        locale={props.locale}
+        rootPrefixCls={prefixCls}
+        selectComponentClass={props.selectComponentClass}
+        selectPrefixCls={props.selectPrefixCls}
+        changeSize={this.props.showSizeChanger ? this.changePageSize : null}
+        pageSize={this.state.pageSize}
+        pageSizeOptions={this.props.pageSizeOptions}
+      />
+    );
+
     if (props.showTotal) {
       totalText = (
         <li className={`${prefixCls}-total-text`}>
@@ -504,6 +517,7 @@ export default class Pagination extends React.Component {
             pageSize,
             this.changePageSize,
             props,
+            sizeChanger,
           )}
         </li>
       );
@@ -541,12 +555,7 @@ export default class Pagination extends React.Component {
         <Options
           locale={props.locale}
           rootPrefixCls={prefixCls}
-          selectComponentClass={props.selectComponentClass}
-          selectPrefixCls={props.selectPrefixCls}
-          changeSize={this.props.showSizeChanger ? this.changePageSize : null}
           current={this.state.current}
-          pageSize={this.state.pageSize}
-          pageSizeOptions={this.props.pageSizeOptions}
           quickGo={this.props.showQuickJumper ? this.handleChange : null}
           goButton={goButton}
         />
